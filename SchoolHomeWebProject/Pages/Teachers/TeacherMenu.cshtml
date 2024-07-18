@@ -1,0 +1,20 @@
+﻿@page
+@using Project.ModelsSchool;
+@model SchoolHomeWebProject.Pages.Teachers.TeacherMenuModel
+@{
+    ViewData["Title"] = "Menu Teacher";
+}
+<link rel="stylesheet" href="~/css/teacherMenuStyle.css">
+<div>
+    <h1>Welcome to School Home</h1>
+    <p>Select your option:</p>
+    <form method="post">
+        <button type="submit" name="inputChoice" value="consultAllLectures" class="btn btn-primary"> Consult All Lectures</button>
+        <button type="submit" name="inputChoice" value="AddNewLecture" class="btn btn-primary">Add New Lecture</button>
+        <button type="submit" name="inputChoice" value="MyLectures" class="btn btn-primary">My Lectures</button>
+        <button type="submit" name="inputChoice" value="TeacherPersonalInformation" class="btn btn-primary">My Informations</button>
+        <button type="submit" name="inputChoice" value="ImageUpload" class="btn btn-primary">Upload Image</button>
+
+
+    </form>
+</div>

@@ -1,0 +1,51 @@
+﻿@page
+@using Project.ModelsSchool
+@model SchoolHomeWebProject.Pages.Students.ConsultAllLecturesModel
+@{
+    ViewData["Title"] = "Lectures page";
+}
+
+<h1>Lectures</h1>
+<h4>Consult all lectures</h4>
+
+<table>
+    <tr>
+        <th>ClassName</th>
+        <th>Subject</th>
+        <th>StartTime</th>
+        <th>EndTime</th>
+
+    </tr>
+    @if (Model.Lectures != null)
+    {
+        foreach (Lecture lecture in Model.Lectures)
+        {
+            <tr>
+                <td>@lecture.ClassName</td>
+                <td>@lecture.ClassSubject.SubjectName</td>
+                <td>@lecture.StartTime</td>
+                <td>@lecture.EndTime</td>
+                <form method="post" asp-page-handler="AddLecture">
+                    <input type="hidden" name="ClassId" value="@lecture.ClassId" />
+                    <input type="hidden" name="SubjectId" value="@lecture.ClassSubject.SubjectId" />
+                    <td><button type="submit" class="btn btn-primary">Add Lecture</button></td>
+                </form>
+            </tr>
+           
+            
+        }
+
+    }
+</table>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}

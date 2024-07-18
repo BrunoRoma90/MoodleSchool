@@ -1,0 +1,25 @@
+﻿@page
+@model SchoolHomeWebProject.Pages.Teachers.ImageUploadModel
+@{
+    ViewData["Title"] = "Image Uploader";
+}
+
+<link rel="stylesheet" href="~/css/imageUploadStyle.css">
+
+<h1>Image Upload</h1>
+<form id="frmImageUploader" method="post" enctype="multipart/form-data">
+    <div>
+        <label>Select you image</label><br />
+        <input id="fileImage" type="file" asp-for="ImageFile" class="form-control" /><br />
+
+    </div>
+    <div>
+        <input id="btnSubmit" type="submit" value="Upload" class="btn btn-primary" />
+    </div>
+</form>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}

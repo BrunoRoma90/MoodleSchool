@@ -1,0 +1,33 @@
+﻿@page
+@using Project.ModelsSchool;
+@model SchoolHomeWebProject.Pages.Teachers.MyLecturesModel
+@{
+    ViewData["Title"] = "My Lectures";
+}
+
+<link rel="stylesheet" href="~/css/myLecturesStyle.css">
+<h1>My Lectures</h1>
+<h4>Consult all lectures</h4>
+
+<table>
+    <tr>
+        <th>ClassName</th>
+        <th>Subject</th>
+        <th>StartTime</th>
+        <th>EndTime</th>
+
+    </tr>
+    @if (Model.Lectures != null)
+    {
+        foreach (Lecture lecture in Model.Lectures)
+        {
+            <tr>
+                <td>@lecture.ClassName</td>
+                <td>@lecture.ClassSubject.SubjectName</td>
+                <td>@lecture.StartTime.ToString("g")</td>
+                <td>@lecture.EndTime.ToString("g")</td>
+            </tr>
+        }
+
+    }
+</table>

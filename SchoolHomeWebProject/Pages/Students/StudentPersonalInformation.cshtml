@@ -1,0 +1,53 @@
+﻿@page
+@using Project.ModelsSchool
+@model SchoolHomeWebProject.Pages.Students.StudentPersonalInformationModel
+@{
+    ViewData["Title"] = "Personal Information";
+
+}
+
+<link rel="stylesheet" href="~/css/myInformationsStyle.css">
+
+<h1>My Informations</h1>
+
+
+<table>
+    <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Birthdate</th>
+        <th>Email</th>
+        <th>PhoneNumber</th>
+        <th>Username</th>
+        <th>Address</th>
+    </tr>
+
+    <tr>
+        <td>@Model.Student.FirstName</td>
+        <td>@Model.Student.LastName</td>
+        <td>@Model.Student.BirthDate.ToString("d")</td>
+        <td>@Model.Student.Email</td>
+        <td>@Model.Student.PhoneNumber</td>
+        <td>@Model.Student.UserName</td>
+        <td>@Model.Student.Address.Street @Model.Student.Address.Number @Model.Student.Address.Locale @Model.Student.Address.PostalCode</td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th>SubjectName</th>
+        <th>SubjectDescription</th>
+
+    </tr>
+    @if (Model.Subjects != null)
+    {
+        foreach (Subject subject in Model.Subjects)
+        {
+            <tr>
+                <td>@subject.SubjectName</td>
+                <td>@subject.SubjectDescription</td>
+
+            </tr>
+        }
+
+    }
+</table>

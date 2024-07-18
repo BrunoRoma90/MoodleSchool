@@ -1,0 +1,83 @@
+﻿@page
+@using Project.ModelsSchool
+@model SchoolHomeWebProject.Pages.AddNewLecturesModel
+@{
+    ViewData["Title"] = "Add New Lecture";
+}
+
+<link rel="stylesheet" href="~/css/addNewLectureStyle.css">
+
+<h1>Add New Lecture</h1>
+
+<form method="post" id="lectureForm" onsubmit="return validateDates()">
+    <div class="form-group">
+        <label asp-for="Lecture.ClassName">Class Name:</label>
+        <input asp-for="Lecture.ClassName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Subjects:</label>
+        <select asp-for="Lecture.ClassSubject.SubjectId" class="form-control">
+            <option value="">Select a subject...</option>
+            @foreach (var subject in Model.Subjects)
+            {
+                <option value="@subject.SubjectId">@subject.SubjectName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Lecture.StartTime">Start Time:</label>
+        <input asp-for="Lecture.StartTime" class="form-control" type="datetime-local" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Lecture.EndTime">End Time:</label>
+        <input asp-for="Lecture.EndTime" class="form-control" type="datetime-local" />
+    </div>
+    @*<div id="error-message" style="display:none; color:red;"></div>*@ 
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+    <button type="submit" class="btn btn-primary">Add Lecture</button>
+</form>
+
+<script src="~/js/lectureValidation.js"></script>
+
+
+@*<h1>Add New Lecture</h1>
+
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Lecture.ClassName">Class Name:</label>
+        <input asp-for="Lecture.ClassName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Subjects:</label>
+        <select asp-for="Lecture.ClassSubject.SubjectId" class="form-control">
+            <option value="">Select a subject...</option>
+            @foreach (var subject in Model.Subjects)
+            {
+                <option value="@subject.SubjectId">@subject.SubjectName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Lecture.StartTime">Start Time:</label>
+        <input asp-for="Lecture.StartTime" class="form-control" type="datetime-local" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Lecture.EndTime">End Time:</label>
+        <input asp-for="Lecture.EndTime" class="form-control" type="datetime-local" />
+    </div>
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+    <button type="submit" class="btn btn-primary" onclick="return validateDates()">Add Lecture</button>
+</form>
+
+<script src="~/js/lectureValidation.js"></script>*@

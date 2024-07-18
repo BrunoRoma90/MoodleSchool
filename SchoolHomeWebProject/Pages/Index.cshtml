@@ -1,0 +1,19 @@
+﻿@page
+@using Project.ModelsSchool;
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<link rel="stylesheet" href="~/css/IndeexStyle.css">
+<div class="container-index">
+    <h1>Welcome to School Home</h1>
+    <p>Select your login:</p>
+    <form method="post">
+        <button type="submit" name="loginType" value="teacher" class="btn btn-primary">Teacher Login</button>
+        <button type="submit" name="loginType" value="student" class="btn btn-primary">Student Login</button>
+    </form>
+</div>
+
+
+
